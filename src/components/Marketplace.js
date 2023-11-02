@@ -26,12 +26,17 @@ const Marketplace=(props)=>{
         meta = meta.data;
            console.log(i.price);
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
+        // let rating = Number(ethers.utils.parseEther(i.totalRatingPoints.toString()));
+        // let rating=i.totalRatingPoints.toNumber();
+        let rating=await contract.getAverageRating(i.tokenId);
+        console.log(rating)
         IPFSUrl=meta.image;
         var IPFSUrl = IPFSUrl.split("/");
         const lastIndex1 = IPFSUrl.length;
         IPFSUrl = "https://ipfs.io/ipfs/"+IPFSUrl[lastIndex1-1];
         
         let item = {
+            tokenid:i.tokenId,
             price:price,
             tokenId: i.tokenId.toNumber(),
             seller: i.seller,
@@ -39,8 +44,10 @@ const Marketplace=(props)=>{
             image: IPFSUrl,
             name: meta.name,
             ingredients:meta.ingredients,
-            recipe:meta.recipe
+            recipe:meta.recipe,
+            rating:rating
         }
+        // console.log(rating)
         // console.log(item)
         return item;
     }))

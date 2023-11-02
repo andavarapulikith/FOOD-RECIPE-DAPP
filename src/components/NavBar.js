@@ -10,6 +10,7 @@ function NavBar(props) {
         <li className="nav-item"><Link to="/">Marketplace</Link></li>
         <li className="nav-item"><Link to='/addfoodrecipe'>Add Food Recipe</Link></li>
         <li className="nav-item"><Link to="/profile">Your NFTs</Link></li>
+        <li className="nav-item"><Link to="/favourites">Your Favourites</Link></li>
         
       </ul>
       {/* {props.currentaddress} */}

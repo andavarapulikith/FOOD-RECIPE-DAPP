@@ -17,6 +17,7 @@ const Profile=(props)=>{
         const items = await Promise.all(transaction.map(async fooditem => {
             const tokenURI = await contract.tokenURI(fooditem.tokenId);
             let foodmetadata = await axios.get(tokenURI);
+            let rating=await contract.getAverageRating(fooditem.tokenId);
             foodmetadata = foodmetadata.data;
             let price = ethers.utils.formatUnits(fooditem.price.toString(), 'ether');
             let item = {
@@ -27,7 +28,8 @@ const Profile=(props)=>{
                 image: foodmetadata.image,
                 name: foodmetadata.name,
                 ingredients:foodmetadata.ingredients,
-                recipe:foodmetadata.recipe
+                recipe:foodmetadata.recipe,
+                rating:rating
             }
             return item;
         }))

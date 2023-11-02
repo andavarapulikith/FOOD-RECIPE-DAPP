@@ -3,7 +3,7 @@
     background-color: #fdfdfd;
     border: 2px solid #edf0f7;
     width: 400px;
-    height: 400px;
+    height: 510px;
       font-family: "Raleway";
     /* padding: 10px; */
     border-radius: 10px;
@@ -38,4 +38,15 @@ hr{
 }
 Link{
     text-decoration: none;
+}
+.addbtn{
+  text-align: center;
+ margin-left:60px;
+ width: 250px;
+ height: 35px;
+ background-color: #3498db;
+ border-radius: 10px;
+ font-size: 20px;
+ color: white;
+ border:2px solid #3498db;
 }

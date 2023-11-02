@@ -8,6 +8,7 @@ import FoodRecipeForm from './components/RecipeForm';
 import Profile from './components/Profile';
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FavoritesPage from './components/Favourites';
 import {
   BrowserRouter,
   Routes,
@@ -64,7 +65,8 @@ useEffect(()=>{
         <Route path='/' element={<Marketplace currentaddress={currentaddress} connecttometamask={connectWebsite}/>}></Route>
           <Route path="/addfoodrecipe" element={<FoodRecipeForm currentaddress={currentaddress} connecttometamask={connectWebsite}/>}/>
           <Route path='/fooditem/:tokenId' element={<Fulldetailfood currentaddress={currentaddress} connecttometamask={connectWebsite} contract={contract}></Fulldetailfood>}/> 
-          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={connectWebsite} signer={Signer}></Profile>} />      
+          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={connectWebsite} signer={Signer}></Profile>} />
+          <Route path='/favourites' element={<FavoritesPage currentaddress={currentaddress} connecttometamask={connectWebsite} signer={Signer}></FavoritesPage>} />      
         </Routes>
        
     </div>

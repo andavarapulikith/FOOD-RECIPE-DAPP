@@ -7,8 +7,8 @@
    font-weight: 400;
     width: 70%;
     margin: auto;
-    margin-top: 100px;
-    height: 450px;
+    margin-top: 60px;
+    max-height: 530px;
     background-color: rgba(16, 193, 166, 0.1);
     border-radius: 10px;
     
@@ -36,6 +36,7 @@
     width: 60%;
    margin-left: 15px;
    max-height: 600px;
+   font-weight: 400;
    overflow: scroll;
 
 }
@@ -44,12 +45,13 @@
     font-size: 20px;
     margin: 3px;
 }
-.left button {
+.left .button {
     margin-left: 120px;
     margin-top:15px;
     width: 200px;
     height: 40px;
     background-color:  rgba(16, 193, 166, 0.996);
+    align-items: center;
     padding:5px 20px;
     border: 2px solid rgba(16, 193, 166, 1);
     border-radius: 7px;
@@ -64,4 +66,35 @@
     color: red;
     margin: 2px;
     font-size: 15px;
+}
+.rating{
+    margin:auto;
+    text-align: center;
+}
+.rating button{
+    margin-left: 5px;
+    background-color: rgba(16, 193, 166, 1);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-family: 700;
+    border:2px solid rgba(16, 193, 166, 0.996);
+    width: 200px;
+
+}
+select{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    font-size: 600;
+    border-radius: 5px;
+    border: 3px solid rgba(16, 193, 166, 1);
+    background-color: rgba(16, 193, 166, 0.00001);
+}
+.ratingSelect{
+   font-size: 20px;
+}
+.totalrating{
+    display: flex;
+    margin-bottom: 20px;
 }
