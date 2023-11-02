@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway';
+    min-height: 100px;
+  
+    /* margin-top: 160px; Adjust the value as needed */
+    padding-top: 60px; /* You can use either margin or padding */
+  
+    /* height: 350px; */
+    /* width: 400px;  */
+    font-family: "Raleway";
+    margin-bottom: 100px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+  
+    width: 50%;
+    /* margin: 1550px; */
+  }
+  
+  form {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    /* font-weight: 600; */
+  }
+  
+  textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    max-width: 730px;
+    /* font-weight: 600; */
+  }
+  
+  .button {
+    background-color: rgba(16, 193, 166, 0.978);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width:40%;
+    display: flex;
+    justify-content: center;
+    margin-left: 240px;
+  }
+  
+  .button:hover {
+    color: rgba(16, 193, 166, 0.978);
+    background-color: #fff;
+    
+  }
+  .button:disabled{
+    background-color: grey;
+  }

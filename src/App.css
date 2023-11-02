@@ -1,0 +1,6 @@
+/* Resetting margin for the body element */
+body {
+  margin: 0;
+  /* margin-top: 2px; */
+  padding: 0;
+}

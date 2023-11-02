@@ -1,0 +1,41 @@
+.card
+{
+    background-color: #fdfdfd;
+    border: 2px solid #edf0f7;
+    width: 400px;
+    height: 400px;
+      font-family: "Raleway";
+    /* padding: 10px; */
+    border-radius: 10px;
+}
+li{
+    list-style: none;
+}
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.image
+{
+    width:300px;
+    height: 250px;
+    border-radius: 10px 10px 0 0;
+}
+.card .image img{
+   height: 100%;
+   width: 100%;
+   border-radius: 10px 10px 0 0;
+   
+   /* overflow: hidden; */
+}
+.content{
+    padding: 10px;
+}
+.content h2{
+    font-size: 20px;
+    color: rgba(16, 193, 166, 0.978);
+    text-decoration: none;
+}
+Link{
+    text-decoration: none;
+}
