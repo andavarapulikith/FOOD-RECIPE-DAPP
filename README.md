@@ -7,6 +7,7 @@ To set up the repository and run the marketplace locally, run the below
 npm install
 npm start
 ```
-![Local Image](![image]([image.png)](https://drive.google.com/file/d/1_LwC_RBD_PlNohbmFeQVvQCfywO0_xPT/view?usp=sharing)https://drive.google.com/file/d/1_LwC_RBD_PlNohbmFeQVvQCfywO0_xPT/view?usp=sharing)
+![image](https://github.com/andavarapulikith/FOOD-RECIPE-DAPP-/assets/108012282/cfd1e967-2a79-401a-b710-cfcbe9c5a791)
+
 
 
