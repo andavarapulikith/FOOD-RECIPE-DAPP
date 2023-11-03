@@ -7,7 +7,7 @@ import foodrecipeJSON from './foodrecipe.json'
 import FoodRecipeForm from './components/RecipeForm';
 import Profile from './components/Profile';
 import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import FavoritesPage from './components/Favourites';
 import {
   BrowserRouter,
@@ -18,8 +18,6 @@ import {
 
 function App() {
   const [currentaddress,setCurrentaddress]=useState("0x");
-  const [Signer,setSigner]=useState({});
-  const [contract,setContract]=useState({})
   async function getAddress()
   {
       const ethers=require("ethers");
@@ -64,9 +62,9 @@ useEffect(()=>{
      
         <Route path='/' element={<Marketplace currentaddress={currentaddress} connecttometamask={connectWebsite}/>}></Route>
           <Route path="/addfoodrecipe" element={<FoodRecipeForm currentaddress={currentaddress} connecttometamask={connectWebsite}/>}/>
-          <Route path='/fooditem/:tokenId' element={<Fulldetailfood currentaddress={currentaddress} connecttometamask={connectWebsite} contract={contract}></Fulldetailfood>}/> 
-          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={connectWebsite} signer={Signer}></Profile>} />
-          <Route path='/favourites' element={<FavoritesPage currentaddress={currentaddress} connecttometamask={connectWebsite} signer={Signer}></FavoritesPage>} />      
+          <Route path='/fooditem/:tokenId' element={<Fulldetailfood currentaddress={currentaddress} connecttometamask={connectWebsite} ></Fulldetailfood>}/> 
+          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={connectWebsite} ></Profile>} />
+          <Route path='/favourites' element={<FavoritesPage currentaddress={currentaddress} connecttometamask={connectWebsite} ></FavoritesPage>} />      
         </Routes>
        
     </div>

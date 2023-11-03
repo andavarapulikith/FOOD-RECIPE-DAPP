@@ -3,13 +3,16 @@ import NavBar from "./NavBar";
 import foodrecipejson from '../foodrecipe.json'
 import axios from 'axios';
 import { useEffect, useState } from "react";
-
+import { ClipLoader } from 'react-spinners';
 import './Marketplace.css';
 import FoodItem from "./FoodItem";
 const Marketplace=(props)=>{
   const [data,setData]=useState([]);
   const [fetcheddata,setFetcheddata]=useState(false);
+  const [loading,setLoading]=useState(false);
   async function getallfooditems() {
+    setLoading(true)
+    console.log(loading)
     console.log(props.currentaddress);
     const ethers = require("ethers");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -24,7 +27,7 @@ const Marketplace=(props)=>{
        tokenURI = "https://ipfs.io/ipfs/"+IPFSUrl[lastIndex-1];
         let meta = await axios.get(tokenURI);
         meta = meta.data;
-           console.log(i.price);
+        //    console.log(i.price);
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
         // let rating = Number(ethers.utils.parseEther(i.totalRatingPoints.toString()));
         // let rating=i.totalRatingPoints.toNumber();
@@ -54,26 +57,28 @@ const Marketplace=(props)=>{
     // items.splice(0,2);
     setFetcheddata(true);
     setData(items);
+    setLoading(false)
     // console.log(items);
 }
 
 useEffect(()=>{
-    function allnfts()
+    async function allnfts()
     {
-     getallfooditems();
+     await getallfooditems();
     }
     allnfts();
-},[fetcheddata])
+},[props.currentaddress])
 
 return (<>
 <NavBar currentaddress={props.currentaddress} connecttometamask={props.connecttometamask}></NavBar>
-<div>
+{loading}
+{loading?  <ClipLoader size={50} color={'#123abc'}  loading={loading} />:<div>
 <ul style={{ display: "flex", flexWrap: "wrap",gap:"60px" }}>
 {data.map((fooditem)=>{
     return <FoodItem fooditem={fooditem}></FoodItem>
 })}
 </ul>       
-</div>
+</div>}
 </>)
 }
 export default Marketplace;

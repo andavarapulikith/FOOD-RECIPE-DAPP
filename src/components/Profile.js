@@ -4,10 +4,13 @@ import Foodrecipejson from '../foodrecipe.json'
 import axios from "axios";
 import './Profile.css'
 import FoodItem from "./FoodItem";
+import { ClipLoader } from "react-spinners";
 const Profile=(props)=>{
     const [data,setData]=useState([]);
+    const [loading,setLoading]=useState(false)
     async function getfooditemdata(tokenId) 
     {
+        setLoading(true)
         const ethers = require("ethers");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
@@ -35,6 +38,7 @@ const Profile=(props)=>{
         }))
 
         setData(items);
+        setLoading(false)
        
         
     }
@@ -48,14 +52,14 @@ const Profile=(props)=>{
     
    </div>
    <hr className="hr"/>
-   <div className="nftsdisplay">
+   {loading?<h2><ClipLoader size={50} color={'#123abc'}  loading={loading} /></h2>:<div className="nftsdisplay">
         <h2>Your NFTs</h2>
         <ul style={{ display: "flex", flexWrap: "wrap",gap:"60px" }}>
 {data.map((fooditem)=>{
     return <FoodItem fooditem={fooditem}></FoodItem>
 })}
 </ul>
-    </div>
+    </div>}
 
    </>)
 }

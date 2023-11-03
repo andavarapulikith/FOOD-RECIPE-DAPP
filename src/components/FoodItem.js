@@ -34,7 +34,7 @@ const FoodItem=({fooditem})=>{
         <li>
 <div className="card">
 <Link to={url} style={{textDecoration:"none"}}>
-<div className="image">
+<div className="images">
 <img src={fooditem.image} alt=''/>
 </div>
 <hr/>

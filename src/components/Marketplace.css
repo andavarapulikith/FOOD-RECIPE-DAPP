@@ -3,7 +3,7 @@
     background-color: #fdfdfd;
     border: 2px solid #edf0f7;
     width: 400px;
-    height: 510px;
+    height: 480px;
       font-family: "Raleway";
     /* padding: 10px; */
     border-radius: 10px;
@@ -15,13 +15,13 @@ hr{
     margin-top: 0;
     margin-bottom: 0;
 }
-.image
+.images
 {
-    width:300px;
+    width:400px;
     height: 250px;
     border-radius: 10px 10px 0 0;
 }
-.card .image img{
+.card .images img{
    height: 100%;
    width: 100%;
    border-radius: 10px 10px 0 0;
@@ -50,3 +50,5 @@ Link{
  color: white;
  border:2px solid #3498db;
 }
+
+  

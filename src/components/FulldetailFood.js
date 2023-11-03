@@ -5,7 +5,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import './Fullfooddetail.css'
-import { list } from "postcss";
+
+import { ClipLoader } from "react-spinners";
 const Fulldetailfood=(props)=>{
     const params=useParams();
     const tokenid=params.tokenId;
@@ -13,7 +14,9 @@ const Fulldetailfood=(props)=>{
     const [data,setData]=useState({})
     const [useralreadyrated,setalreadyrated]=useState(false);
     const [datafetched,setDatafetched]=useState(false);
+    const [loading,setLoading]=useState(false);
     async function getfooditemdata(tokenId) {
+        setLoading(true)
         const ethers = require("ethers");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
@@ -52,6 +55,7 @@ const Fulldetailfood=(props)=>{
         })
         setData(item);
         setDatafetched(true);
+        setLoading(false)
         
       
        
@@ -114,7 +118,7 @@ const Fulldetailfood=(props)=>{
     return (
         <>
         <NavBar currentaddress={props.currentaddress} connecttometamask={props.connecttometamask}></NavBar>
-    <div className="cardex">
+    {loading? <ClipLoader size={50} color={'#123abc'}  loading={loading} />:<div className="cardex">
         <div className="left">
         <div className="image">
             <img src={data.image} alt="" />
@@ -151,7 +155,7 @@ const Fulldetailfood=(props)=>{
         <h2>Recipe:</h2>
         <p>{data.recipe}</p>
         </div>
-    </div>
+    </div>}
     </>);
 }
 export default Fulldetailfood;
