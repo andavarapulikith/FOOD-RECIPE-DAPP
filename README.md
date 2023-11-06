@@ -5,8 +5,15 @@ I've created a decentralized food recipe marketplace DApp using Solidity for sma
 To set up the repository and run the marketplace locally, run the below
 ```bash
 npm install
+npx hardhat run --network goerli
 npm start
 ```
+
+## Deployment Link:
+https://food-recipe-dapp-qbki.vercel.app/
+
+
+
 ## Marketplace
 ![image](https://github.com/andavarapulikith/FOOD-RECIPE-DAPP-/assets/108012282/cfd1e967-2a79-401a-b710-cfcbe9c5a791)
 
