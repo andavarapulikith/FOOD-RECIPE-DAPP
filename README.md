@@ -7,6 +7,12 @@ To set up the repository and run the marketplace locally, run the below
 npm install
 npm start
 ```
+
+## Deployment Link:
+[Food recipe dapp]([(https://food-recipe-dapp-qbki.vercel.app/])
+
+
+
 ## Marketplace
 ![image](https://github.com/andavarapulikith/FOOD-RECIPE-DAPP-/assets/108012282/cfd1e967-2a79-401a-b710-cfcbe9c5a791)
 
