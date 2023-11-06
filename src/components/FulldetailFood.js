@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import './Fullfooddetail.css'
-
+import { toast } from "sonner";
 import { ClipLoader } from "react-spinners";
 const Fulldetailfood=(props)=>{
     const params=useParams();
@@ -78,7 +78,7 @@ const Fulldetailfood=(props)=>{
             setMessage("Buying the NFT... Please Wait (Upto 1 min )")
             let transaction = await contract.PurchaseFoodItem(tokenId, {value:salePrice});
             await transaction.wait();
-            alert('You successfully bought the food recipe!');
+            toast.success('You successfully bought the recipe!!!')
             window.location.replace(location.pathname)
             setMessage("");
         }
@@ -104,7 +104,7 @@ const Fulldetailfood=(props)=>{
             const transaction = await contract.rateFoodItem(tokenid, rating);
             await transaction.wait();
 
-            alert('You successfully rated the food item!');
+            toast.success('Your rating to the food item was successfull!!!')
             setMessage("");
             getfooditemdata(tokenid)
         } catch (e) {

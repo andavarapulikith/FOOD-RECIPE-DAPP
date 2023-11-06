@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import foodrecipeJSON from '../foodrecipe.json'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner'
 const FoodItem=({fooditem})=>{
     const [message,setmessage]=useState("")
     const url={pathname:'/fooditem/'+fooditem.tokenId}
@@ -18,7 +19,8 @@ const FoodItem=({fooditem})=>{
             const transaction = await contract.addToFavorites(fooditem.tokenid);
             await transaction.wait();
 
-            alert('You successfully added the food item to your favourites!');
+            // alert('You successfully added the food item to your favourites!');
+            toast.success('Added to favourites')
             setmessage("")
             navigate("/favourites")
         }
@@ -33,6 +35,7 @@ const FoodItem=({fooditem})=>{
 
         <li>
 <div className="card">
+
 <Link to={url} style={{textDecoration:"none"}}>
 <div className="images">
 <img src={fooditem.image} alt=''/>

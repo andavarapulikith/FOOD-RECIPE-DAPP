@@ -71,7 +71,7 @@ useEffect(()=>{
 
 return (<>
 <NavBar currentaddress={props.currentaddress} connecttometamask={props.connecttometamask}></NavBar>
-{loading}
+
 {loading?  <ClipLoader size={50} color={'#123abc'}  loading={loading} />:<div>
 <ul style={{ display: "flex", flexWrap: "wrap",gap:"60px" }}>
 {data.map((fooditem)=>{

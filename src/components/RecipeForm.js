@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Food.css";
 import NavBar from "./NavBar";
-import {uploadFileToIPFS,uploadJSONToIPFS} from '../pinata'
-import Foodrecipe from '../foodrecipe.json'
+import {uploadFileToIPFS,uploadJSONToIPFS} from '../pinata';
+import Foodrecipe from '../foodrecipe.json';
 import { useNavigate } from "react-router-dom";
+import {toast} from "sonner";
 const FoodRecipeForm = (props) => {
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
@@ -72,7 +73,7 @@ const FoodRecipeForm = (props) => {
             listingprice=listingprice.toString();
             let transaction=await contract.createFoodToken(metadataURL,price,{value:listingprice});
             await transaction.wait();
-          alert("successfully added your food recipe!!!");
+            toast.success('Successfully added your food recipe to marketplace!!!')
 
           setMessage("");
           setFormData({ name: "",

@@ -4,6 +4,7 @@ import foodrecipeJSON from '../foodrecipe.json'
 import axios from 'axios'
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
+import {toast} from "sonner";
 function FavoritesPage(props) {
     const [favoriteItems, setFavoriteItems] = useState([]);
 
@@ -56,6 +57,8 @@ function FavoritesPage(props) {
         let contract = new ethers.Contract(foodrecipeJSON.address, foodrecipeJSON.abi, signer);
         await contract.removeFromFavorites(tokenId);
         setFavoriteItems(favoriteItems.filter((item) => item.tokenId !== tokenId));
+        toast.success('successfully removed from your favourties!!')
+
       } catch (error) {
         console.error("Error removing from favorites:", error);
       }

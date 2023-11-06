@@ -7,7 +7,7 @@ import foodrecipeJSON from './foodrecipe.json'
 import FoodRecipeForm from './components/RecipeForm';
 import Profile from './components/Profile';
 import { useState,useEffect } from 'react';
-
+import { Toaster, toast } from 'sonner'
 import FavoritesPage from './components/Favourites';
 import {
   BrowserRouter,
@@ -17,6 +17,7 @@ import {
 
 
 function App() {
+
   const [currentaddress,setCurrentaddress]=useState("0x");
   async function getAddress()
   {
@@ -55,8 +56,9 @@ useEffect(()=>{
   getaddressdetails();
 },[])
   return (
+
     <div>
-  
+
        
         <Routes>
      
