@@ -4,6 +4,7 @@ I've created a decentralized food recipe marketplace DApp using Solidity for sma
 
 To set up the repository and run the marketplace locally, run the below
 ```bash
+npx hardhat run --network goerli
 npm install
 npm start
 ```
