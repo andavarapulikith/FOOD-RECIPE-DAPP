@@ -9,7 +9,7 @@ npm start
 ```
 
 ## Deployment Link:
-[(https://food-recipe-dapp-qbki.vercel.app/]
+https://food-recipe-dapp-qbki.vercel.app/
 
 
 
