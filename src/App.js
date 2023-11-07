@@ -1,16 +1,12 @@
 import './App.css';
-import FoodItem from './components/FoodItem';
 import Fulldetailfood from './components/FulldetailFood';
 import Marketplace from './components/Marketplace';
-import NavBar from './components/NavBar';
-import foodrecipeJSON from './foodrecipe.json'
 import FoodRecipeForm from './components/RecipeForm';
 import Profile from './components/Profile';
 import { useState,useEffect } from 'react';
-import { Toaster, toast } from 'sonner'
+
 import FavoritesPage from './components/Favourites';
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";

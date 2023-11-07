@@ -1278,8 +1278,8 @@
       ]
     },
     "C:\\Users\\likit\\OneDrive\\Desktop\\food dapp bta\\fooddapp\\contracts\\FoodRecipe.sol": {
-      "lastModificationDate": 1698938185514,
-      "contentHash": "59eb6c1daae14954c4aadbedda309dd7",
+      "lastModificationDate": 1699283519439,
+      "contentHash": "73e22acb150291713ba8913375ed73ad",
       "sourceName": "contracts/FoodRecipe.sol",
       "solcConfig": {
         "version": "0.8.4",

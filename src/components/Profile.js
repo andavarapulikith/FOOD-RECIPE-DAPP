@@ -25,7 +25,7 @@ const Profile=(props)=>{
             let price = ethers.utils.formatUnits(fooditem.price.toString(), 'ether');
             let item = {
                 price,
-                tokenId: fooditem.tokenId.toNumber(),
+                tokenId: fooditem.tokenId,
                 seller: fooditem.seller,
                 owner: fooditem.owner,
                 image: foodmetadata.image,

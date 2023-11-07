@@ -71,17 +71,16 @@ contract FoodRecipe is ERC721URIStorage {
             0,
             new address[](0)
         );
-        emit FoodItemAdded(newTokenId, address(this), msg.sender, price, true);
+         
+        emit FoodItemAdded(newTokenId,msg.sender,address(this), price, true);
         availableFoodItemIds.push(newTokenId);
         return newTokenId;
     }
 
-   
-
     function rateFoodItem(uint256 tokenId, uint8 rating) public {
         require(rating >= 1 && rating <= 5, "Rating must be between 1 and 5");
         FoodItem storage item = idToFoodItemMap[tokenId];
-      
+
         require(
             item.owner != msg.sender,
             "The owner cannot rate their own item"
@@ -160,67 +159,72 @@ contract FoodRecipe is ERC721URIStorage {
         }
         return items;
     }
-      function PurchaseFoodItem(uint256 tokenid) public payable {
-        uint256 price=idToFoodItemMap[tokenid].price;
-        address seller=payable(idToFoodItemMap[tokenid].owner);
-        require(msg.value==price,"you must pay the price to purchase the order");
-        idToFoodItemMap[tokenid].owner=payable(msg.sender);
-        _transfer(seller,msg.sender,tokenid);
-        approve(seller,tokenid);
+
+    function PurchaseFoodItem(uint256 tokenid) public payable {
+        uint256 price = idToFoodItemMap[tokenid].price;
+        address seller = payable(idToFoodItemMap[tokenid].owner);
+        require(
+            msg.value == price,
+            "you must pay the price to purchase the order"
+        );
+        idToFoodItemMap[tokenid].owner = payable(msg.sender);
+        _transfer(seller, msg.sender, tokenid);
+        approve(seller, tokenid);
         payable(seller).transfer(msg.value);
-
     }
 
+    // Add a struct to represent a favorite item
+    struct FavoriteItem {
+        uint256 tokenId;
+    }
 
-// Add a struct to represent a favorite item
-struct FavoriteItem {
-    uint256 tokenId;
-}
+    // Add a mapping to store a user's favorite items
+    mapping(address => FavoriteItem[]) private userFavorites;
 
-// Add a mapping to store a user's favorite items
-mapping(address => FavoriteItem[]) private userFavorites;
+    // Function to add an item to a user's favorites
+    function addToFavorites(uint256 tokenId) public {
+        
 
-// Function to add an item to a user's favorites
-function addToFavorites(uint256 tokenId) public {
-    // require(idToFoodItemMap[tokenId].available, "The item is not available");
-    // require(msg.sender != idToFoodItemMap[tokenId].owner, "You cannot add your own item to favorites");
+        // Check if the item is already in favorites
+        for (uint256 i = 0; i < userFavorites[msg.sender].length; i++) {
+            if (userFavorites[msg.sender][i].tokenId == tokenId) {
+                return; // Item is already in favorites
+            }
+        }
 
-    // Check if the item is already in favorites
-    for (uint256 i = 0; i < userFavorites[msg.sender].length; i++) {
-        if (userFavorites[msg.sender][i].tokenId == tokenId) {
-            return; // Item is already in favorites
+        // If the item is not in favorites, add it
+        userFavorites[msg.sender].push(FavoriteItem(tokenId));
+    }
+
+    // Function to remove an item from a user's favorites
+    function removeFromFavorites(uint256 tokenId) public {
+        require(
+            userFavorites[msg.sender].length > 0,
+            "There are no favorite items"
+        );
+        for (uint256 i = 0; i < userFavorites[msg.sender].length; i++) {
+            if (userFavorites[msg.sender][i].tokenId == tokenId) {
+                userFavorites[msg.sender][i] = userFavorites[msg.sender][
+                    userFavorites[msg.sender].length - 1
+                ];
+                userFavorites[msg.sender].pop();
+                return;
+            }
         }
     }
 
-    // If the item is not in favorites, add it
-    userFavorites[msg.sender].push(FavoriteItem(tokenId));
-}
+    // Function to return details of all favorite items of a user
+    function getFavoriteItems() public view returns (FoodItem[] memory) {
+        FavoriteItem[] storage favoriteItems = userFavorites[msg.sender];
+        FoodItem[] memory favoriteDetails = new FoodItem[](
+            favoriteItems.length
+        );
 
-// Function to remove an item from a user's favorites
-function removeFromFavorites(uint256 tokenId) public {
-    require(userFavorites[msg.sender].length > 0, "There are no favorite items");
-    for (uint256 i = 0; i < userFavorites[msg.sender].length; i++) {
-        if (userFavorites[msg.sender][i].tokenId == tokenId) {
-            userFavorites[msg.sender][i] = userFavorites[msg.sender][userFavorites[msg.sender].length - 1];
-            userFavorites[msg.sender].pop();
-            return;
+        for (uint256 i = 0; i < favoriteItems.length; i++) {
+            uint256 tokenId = favoriteItems[i].tokenId;
+            favoriteDetails[i] = idToFoodItemMap[tokenId];
         }
+
+        return favoriteDetails;
     }
-}
-
-// Function to return details of all favorite items of a user
-function getFavoriteItems() public view returns (FoodItem[] memory) {
-    FavoriteItem[] storage favoriteItems = userFavorites[msg.sender];
-    FoodItem[] memory favoriteDetails = new FoodItem[](favoriteItems.length);
-
-    for (uint256 i = 0; i < favoriteItems.length; i++) {
-        uint256 tokenId = favoriteItems[i].tokenId;
-        favoriteDetails[i] = idToFoodItemMap[tokenId];
-    }
-
-    return favoriteDetails;
-}
-
-
-
 }

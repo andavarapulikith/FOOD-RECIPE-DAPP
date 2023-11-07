@@ -66,7 +66,7 @@ const FoodRecipeForm = (props) => {
             const metadataURL=await uploadMetadataTOIPFS();
             const provider=new ethers.providers.Web3Provider(window.ethereum);
             const signer=provider.getSigner();
-            setMessage("please wait ...data is uploading (upto 5 min)");
+            setMessage("please wait ...data is uploading (upto 2 min)");
             let contract=new ethers.Contract(Foodrecipe.address,Foodrecipe.abi,signer);
             const price=ethers.utils.parseUnits(formData.price,'ether');
             let listingprice=await contract.getListPrice();

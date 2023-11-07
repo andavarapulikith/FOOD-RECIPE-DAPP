@@ -2,9 +2,7 @@ import env from "react-dotenv";
 
 
 const key=env.PINATAKEY;
-// const key="3c088958c45ebf10ac1b"
 const secret=env.PINATASECRETKEY;
-// const secret="edeb51b8262c47d9d7ac89902e978b19ca568431993dce9a4802f440bf973753"
 const axios = require('axios');
 const FormData = require('form-data');
 export const uploadJSONToIPFS = async(JSONBody) => {
