@@ -27,11 +27,11 @@ function App() {
   async function connectWebsite() {
 
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if(chainId !== '0x5')
+    if(chainId !== '0x11155111')
     {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
+        params: [{ chainId: '0x11155111' }],
      })
     }  
     await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -58,11 +58,11 @@ useEffect(()=>{
        
         <Routes>
      
-        <Route path='/' element={<Marketplace currentaddress={currentaddress} connecttometamask={connectWebsite}/>}></Route>
-          <Route path="/addfoodrecipe" element={<FoodRecipeForm currentaddress={currentaddress} connecttometamask={connectWebsite}/>}/>
-          <Route path='/fooditem/:tokenId' element={<Fulldetailfood currentaddress={currentaddress} connecttometamask={connectWebsite} ></Fulldetailfood>}/> 
-          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={connectWebsite} ></Profile>} />
-          <Route path='/favourites' element={<FavoritesPage currentaddress={currentaddress} connecttometamask={connectWebsite} ></FavoritesPage>} />      
+        <Route path='/' element={<Marketplace currentaddress={currentaddress} connecttometamask={getAddress}/>}></Route>
+          <Route path="/addfoodrecipe" element={<FoodRecipeForm currentaddress={currentaddress} connecttometamask={getAddress}/>}/>
+          <Route path='/fooditem/:tokenId' element={<Fulldetailfood currentaddress={currentaddress} connecttometamask={getAddress} ></Fulldetailfood>}/> 
+          <Route path='/profile' element={<Profile currentaddress={currentaddress} connecttometamask={getAddress} ></Profile>} />
+          <Route path='/favourites' element={<FavoritesPage currentaddress={currentaddress} connecttometamask={getAddress} ></FavoritesPage>} />      
         </Routes>
        
     </div>

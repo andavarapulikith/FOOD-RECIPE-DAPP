@@ -11,9 +11,9 @@ module.exports = {
     hardhat: {
       chainId: 1337
     },
-    goerli: {
+    sepolia: {
       url: process.env.ALCHEMYURL,
-      accounts: [ process.env.PRIVATEKEY]
+      accounts: [process.env.PRIVATEKEY]
     }
   },
   solidity: {
